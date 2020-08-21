@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'blog/login.css' %}", type="text/css">
+        <title>Login</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+        <div class="loginView">
+            <form method="post" action="">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit">login</button>
+                <p id="errorMessage">{{loginFailMessage}}</p>
+            </form>
+            
+        </div>
+        
+    </body>
+</html>

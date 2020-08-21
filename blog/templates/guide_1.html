@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/fonts/circular-std/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='libs/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/fonts/fontawesome/css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css') }}">
+    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="index.html">Concept</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item">
+                            <div id="custom-search" class="top-search-bar">
+                                <input class="form-control" type="text" placeholder="Search..">
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">John Abraham </span>is now following you
+                                                        <div class="notification-date">2 days ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown connection">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+                            <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                                <li class="connection-list">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/github.png" alt="" > <span>Github</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/dribbble.png" alt="" > <span>Dribbble</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/dropbox.png" alt="" > <span>Dropbox</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/bitbucket.png" alt=""> <span>Bitbucket</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/mail_chimp.png" alt="" ><span>Mail chimp</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="assets/images/slack.png" alt="" > <span>Slack</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="conntection-footer"><a href="#">More</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
+                                    <span class="status"></span><span class="ml-2">Available</span>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="http://0.0.0.0:8888/" aria-expanded="false"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Guide</a>
+                                <div id="submenu-2" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="http://0.0.0.0:8888/guide_1">Generate Data<span class="badge badge-secondary"></span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://0.0.0.0:8888/project" aria-expanded="false"><i class="fas fa-fw fa-chart-pie"></i>Project</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content">
+                <div class="row">
+                    <div class="col-xl-10">
+                        <!-- ============================================================== -->
+                        <!-- pageheader  -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="page-header" id="top">
+                                    <h2 class="pageheader-title">Generate Data</h2>
+                                    <div class="page-breadcrumb">
+                                        <nav aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Guide</a></li>
+                                                <li class="breadcrumb-item active" aria-current="page">Generate Data</li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end pageheader  -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- overview  -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="page-section" id="overview">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <h2>Overview</h2>
+                                            <p class="lead">Next-generation sequencing(NGS) analysis can understand the possible causes of different diseases by observing DNA, and further avoid the occurrence of diseases,You can refer to the following steps for basic analysis</p>
+                                            <p>Process</p>
+                                            <br>
+                                            <img src="{{ url_for('static', filename='img/flow.png') }}" width="700" style="display: block;margin-left: auto;margin-right: auto;">
+                                            <br><br>
+                                            <p>Folder Struct</p>
+                                            <img src="{{ url_for('static', filename='img/folderStruct.jpeg') }}" width="700" style="display: block;margin-left: auto;margin-right: auto;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end overview  -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- simple readsTrimming  -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="section-block" id="readsTrimming">
+                                    <h3 class="section-title">ReadsTrimming</h3>
+                                    <p>Here we use Trimmomatic (http://www.usadellab.org/cms/?page=trimmomatic) to eliminate poor quality bases</p>
+                                    <li>$trimmomatic :path to trimmomatic.jar</li>
+                                    <li>$adaptersPath : path to trimmomatic/adapters/TruSeq3-PE-2.fa</li>
+                                    <li>$fq :R1..fastq.gz/R2.clean.fastq.gz (Input)</li>
+                                    <li>$outdir/../.fq.gz: paired & unpaired.fq.gz (Output)</li>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                        <pre>
+                                            <code>
+    java -jar $trimmomatic PE \
+    $fq1 $fq2 \
+    $outdir/cleanfq/${fq_file_name}.paired.1.fq.gz $outdir/cleanfq/${fq_file_name}.unpaired.1.fq.gz \
+    $outdir/cleanfq/${fq_file_name}.paired.2.fq.gz $outdir/cleanfq/${fq_file_name}.unpaired.2.fq.gz \
+    ILLUMINACLIP:$adaptersPath/TruSeq3-PE-2.fa:2:30:10:8:True \
+    SLIDINGWINDOW:5:15 LEADING:5 TRAILING:5 MINLEN:50 -trimlog trimmomatic_log && echo "** fq QC done"
+                                              </code>
+                                        </pre>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end readsTrimming  -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- alignment  -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="section-block" id="alignment">
+                                    <h3 class="section-title">Alignment</h3>
+                                    <p>Use BWA(http://bio-bwa.sourceforge.net) to Arrange similar sequences together,before use samtools(http://www.htslib.org) sort/index/sam convert bam</p>
+                                    <li>$RGID/$sample: sample folder name</li>
+                                    <li>$library : default is None</li>
+                                    <li>$reference: Homo_sapiens_assembly38.fasta</li>
+
+                                    <li>$outdir/../.fq.gz: paired & unpaired.fq.gz (Input)</li>
+                                    <li>${sample}.sorted.bam :sample.sorted.bam(Output)</li>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                    <code>
+    bwa mem -t 4 -M -Y -R "@RG\tID:$RGID\tPL:ILLUMINA\tPU:$RGID\tLB:$library\tSM:$sample" $reference \
+        $outdir/cleanfq/${fq_file_name}.paired.1.fq.gz $outdir/cleanfq/${fq_file_name}.paired.2.fq.gz | $samtools view -Sb - > $outdir/bwa/${sample}.bam \
+        && echo "** BWA EME done **"
+    
+    samtools sort -m 10G -@ 4 -o $outdir/bwa/${sample}.sorted.bam $outdir/bwa/${sample}.bam && echo "**sorted ram bamfile done "
+    
+    samtools index $outdir/bwa/${sample}.sorted.bam && echo "** ${sample}.sorted.bam index done **"
+                                    </code>
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end alignment  -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- variantCalling  -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <!-- step1 -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="section-block" id="variantCalling">
+                                    <h3 class="section-title">VariantCalling</h3>
+                                    <p>Use GATK (https://gatk.broadinstitute.org/hc/en-us) to find out SNP ,following 9 steps</p>
+                                    <p>Step1:Identifies duplicate reads.(This tool locates and tags duplicate reads in a BAM or SAM file, where duplicate reads are defined as originating from a single fragment of DNA.)</p>
+                                    <li>$bamfile :.sorted.bam(Input)</li>
+                                    <li>sample.sorted.markdup.bam(Output)</li>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    # Mark duplicate
+    $gatk --java-options "-Xmx10G" MarkDuplicates \
+        -I $bamfile \
+        -M $outdir/${sample}.markdup_metrics.txt \
+        -O $outdir/${sample}.sorted.markdup.bam && echo "** ${sample}.sorted.bam MarkDuplicates done **"
+
+    # Build index for ${sample}.sorted.markdup.bam (necessary)
+    $samtools index $outdir/${sample}.sorted.markdup.bam && echo "** ${sample}.sorted.markdup.bam index done **"
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <!-- step2 -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <p>Step2:Generates recalibration table for Base Quality Score Recalibration (BQSR)</p>
+                                        <li>${sample}.sorted.markdup.bam(Input)</li>
+                                        <li>${sample}.sorted.markdup.recal_data.table(Output)</li>
+                                <br>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    $gatk --java-options "-Xmx10G" BaseRecalibrator \
+        -R $reference \
+        -I $outdir/${sample}.sorted.markdup.bam \
+        --known-sites $GATK_bundle/1000G_phase1.snps.high_confidence.hg38.vcf.gz \
+        --known-sites $GATK_bundle/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz \
+        --known-sites $GATK_bundle/dbsnp_146.hg38.vcf.gz \
+        -O $outdir/${sample}.sorted.markdup.recal_data.table && echo "** ${sample}.sorted.markdup.recal_data.table done **"
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <!-- step3 -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <p>Step3:it recalibrates the base qualities of the input reads based on the recalibration table produced by the BaseRecalibrator tool, and outputs a recalibrated BAM or CRAM file.</p>
+                                        <li>${sample}.sorted.markdup.bam(Input)</li>
+                                        <li>${sample}.sorted.markdup.BQSR.bam(Output)</li>
+                                        <br>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    $gatk --java-options "-Xmx10G" ApplyBQSR \
+        --bqsr-recal-file $outdir/${sample}.sorted.markdup.recal_data.table \
+        -R $reference \
+        -I $outdir/${sample}.sorted.markdup.bam \
+        -O $outdir/${sample}.sorted.markdup.BQSR.bam && echo "** ApplyBQSR done **"
+
+    # Build index for ${sample}.sorted.markdup.BQSR.bam (necessary)
+    $samtools index $outdir/${sample}.sorted.markdup.BQSR.bam && echo "** ${sample}.sorted.markdup.BQSR.bam index done **"
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <!-- step4 -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <p>Step4: Call germline SNPs and indels via local re-assembly of haplotype.In other words, The HaplotypeCaller is capable of calling SNPs and indels simultaneously via local de-novo assembly of haplotypes in an active region.</p>
+                                        <li>${sample}.sorted.markdup.BQSR.bam(Input)</li>
+                                        <li>${sample}.HC.g.vcf.gz(Output)</li>
+                                        <br>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    $gatk --java-options "-Xmx10G" HaplotypeCaller \
+        -R $reference \
+        -I $outdir/${sample}.sorted.markdup.BQSR.bam \
+        -O $outdir/${sample}.HC.g.vcf.gz \
+        -ERC GVCF \
+        --native-pair-hmm-threads 4 && echo "** GVCF ${sample}.HC.g.vcf.gz done **"
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <!-- step5 -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <p>Step5: Next step input file format should be ".vcf" not ".vcf.gz.So gunzip all vcf.gz file</p>
+                                <p>* This script is .py</p>
+                                        <li>.vcf.gz folder path(Input)</li>
+                                        <li>.gz files(Output)</li>
+                                        <br>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    import os
+    inputPath = "/data/yuching/Exome_data_20191219/gVCF2"
+    sampledirs = os.listdir(inputPath)
+    for sampledir in sampledirs:
+        samplepath = inputPath + "/" + sampledir + "/gatk"
+        vcf_files = os.listdir(samplepath)
+        for vcf_file in vcf_files:
+            if ".vcf.gz" in vcf_file and ".tbi" not in vcf_file:
+                os.system("gunzip " + samplepath + "/" + vcf_file)
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <!-- step6 -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <p>Step6: Merges one or more HaplotypeCaller GVCF files into a single GVCF with appropriate annotations</p>
+                                        <li>.gz files(Input)</li>
+                                        <li>${outname}.HC.vcf(Output)</li>
+                                        <br>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    $gatk CombineGVCFs \
+        -R $reference \
+        ${sample_gvcfs} \
+        -O $outdir/population/${outname}.HC.g.vcf && echo "** ${outname}.HC.g.vcf done ** "
+    $gatk GenotypeGVCFs \
+        -R $reference \
+        -V $outdir/population/${outname}.HC.g.vcf \
+        -O $outdir/population/${outname}.HC.vcf && echo "** ${outname}.HC.vcf done ** "
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <!-- step7 -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <p>Step7: Creates an index for a feature file, e.g. VCF or BED file.</p>
+                                        <li>${outname}.HC.vcf(Input)</li>
+                                        <li>${outname}.HC.vcf(Output)</li>
+                                        <br>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    gunzip $outdir/population/${outname}.HC.vcf.gz
+    gatk IndexFeatureFile \
+        -F $outdir/population/${outname}.HC.vcf
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <!-- step8 -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <p>Step8:Build a recalibration model to score variant quality for filtering purposes (SNP model)</p>
+                                        <li>${outname}.HC.vcf(Input)</li>
+                                        <li>${outname}.HC.snps.recal、${outname}.HC.snps.tranches(Output)</li>
+                                        <br>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    gatk VariantRecalibrator \
+        -R $reference \
+        -V $outdir/population/${outname}.HC.vcf \
+        --resource:hapmap,known=false,training=true,truth=true,prior=15.0 $GATK_bundle/hapmap_3.3.hg38.vcf.gz \
+        --resource:omni,known=false,training=true,truth=false,prior=12.0 $GATK_bundle/1000G_omni2.5.hg38.vcf.gz \
+        --resource:1000G,known=false,training=true,truth=false,prior=10.0 $GATK_bundle/1000G_phase1.snps.high_confidence.hg38.vcf.gz \
+        --resource:dbsnp,known=true,training=false,truth=false,prior=2.0 $GATK_bundle/dbsnp_146.hg38.vcf.gz \
+        -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR \
+        -mode SNP \
+        -tranche 100.0 -tranche 99.9 -tranche 99.0 -tranche 90.0 \
+        --tranches-file $outdir/population/${outname}.HC.snps.tranches \
+        -O $outdir/population/${outname}.HC.snps.recal
+        gatk ApplyVQSR \
+            -R $reference \
+            -V $outdir/population/${outname}.HC.vcf \
+            -ts-filter-level 99.0 \
+            --tranches-file $outdir/population/${outname}.HC.snps.tranches \
+            --recal-file $outdir/population/${outname}.HC.snps.recal \
+            -mode SNP \
+            -O $outdir/population/${outname}.HC.snps.VQSR.vcf && echo "** SNPs VQSR done **"
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <!-- step9 -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <p>Step9 : Same as above but is indels model</p>
+                                        <li>${outname}.HC.vcf(Input)</li>
+                                        <li>${outname}.HC.snps.recal、${outname}.HC.snps.tranches(Output)</li>
+                                        <br>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    gatk VariantRecalibrator \
+       -R $reference \
+       -V $outdir/population/${outname}.HC.vcf \
+       --resource:mills,known=true,training=true,truth=true,prior=12.0 $GATK_bundle/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz \
+       -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR \
+       -mode INDEL \
+       --max-gaussians 6 \
+       --tranches-file $outdir/population/${outname}.HC.indels.tranches \
+       -O $outdir/population/${outname}.HC.indels.recal #&& \
+       #--rscript-file $outdir/population/${outname}.HC.indels.plots.R \
+
+    gatk ApplyVQSR \
+       -R $reference \
+       -V $outdir/population/${outname}.HC.vcf \
+       -ts-filter-level 99.0 \
+       --tranches-file $outdir/population/${outname}.HC.indels.tranches \
+       --recal-file $outdir/population/${outname}.HC.indels.recal \
+       -mode INDEL \
+       -O $outdir/population/${outname}.HC.indels.VQSR.vcf && echo "** Indels VQSR done **"
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- annoation  -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="section-block" id="annoation">
+                                    <h3 class="section-title">Annoation</h3>
+                                    <p>Use SnpEff(http://snpeff.sourceforge.net) to mark the SNP </p>
+                                    <li> .HC.snps.VQSR.vcf (Input)</li>
+                                    <li> .HC.snps.VQSR.ann.vcf(Output)</li>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    java -Xmx100g -jar $snpEff -c $snpEffConfig -v GRCh38.86 $outdir/population/${outname}.HC.snps.VQSR.vcf > $outdir/population/${outname}.HC.snps.VQSR.ann.vcf
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- annoation  -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- IVA -->
+                        <!-- ============================================================== -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="section-block" id="IVA">
+                                    <h3 class="section-title">IVA</h3>
+                                    <p>Select Variant ,Before upload to IVA (total file must run)</p>
+                                    <li> .HC.snps.VQSR.ann.vcf(Input)</li>
+                                    <li> .HC.snps.VQSR.ann.vcf(Output)</li>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <pre>
+                                        <code>
+    gatk SelectVariants \
+         -R Homo_sapiens_assembly38.fasta \
+         -V input.vcf \
+        --select-type-to-include SNP \
+        -O output.vcf
+                                        </code>
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end IVA -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!--  sidebar nav fixed  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
+                        <div class="sidebar-nav-fixed">
+                            <ul class="list-unstyled">
+                                <li><a href="#overview" class="active">Overview</a></li>
+                                <li><a href="#readsTrimming">ReadsTrimming</a></li>
+                                <li><a href="#alignment">Alignment</a></li>
+                                <li><a href="#variantCalling">Variant Calling</a></li>
+                                <li><a href="#annoation">Annoation</a></li>
+                                <li><a href="#IVA">IVA</a></li>
+                                <li><a href="#top">Back to Top</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!--  end sidebar nav fixed  -->
+                    <!-- ============================================================== -->
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+            <script src="{{ url_for('static', filename='/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
+            <!-- bootstap bundle js -->
+            <script src="{{ url_for('static', filename='/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+            <!-- slimscroll js -->
+            <script src="{{ url_for('static', filename='/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
+             <!-- main js -->
+            <script src="{{ url_for('static', filename='/libs/js/main-js.js')}}">
+                
+            </script>
+</body>
+ 
+</html>

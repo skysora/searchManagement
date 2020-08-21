@@ -1,0 +1,74 @@
+filters: [{
+                id: '身份證',
+                label: '身分證',
+                type: 'string',
+                operators: ['equal', 'not_equal', 'in']
+            }, {
+                id: '索引號',
+                label: '索引號',
+                type: 'string',
+                operators: ['equal', 'not_equal', 'in']
+            }, {
+                id: '姓名',
+                label: '姓名',
+                type: 'string',
+                operators: ['equal', 'not_equal', 'in']
+            }, {
+                id: 'GUID',
+                label: 'GUID',
+                type: 'string',
+                operators: ['equal', 'not_equal', 'in']
+            }, {
+                id: 'DNA管號',
+                label: 'DNA管號',
+                type: 'string',
+                operators: ['equal', 'not_equal', 'in']
+            }, {
+                id: '樣本代碼',
+                label: '樣本代碼',
+                type: 'string',
+                operators: ['equal', 'not_equal', 'in']
+            },
+            {
+                id: '工作號_合併',
+                label: '工作號',
+                type: 'string',
+                operators: ['equal', 'not_equal', 'in']
+            },{
+                id: '疾病',
+                label: '疾病',
+                input: 'select',
+                type: 'string',
+                values: {
+                      'ABCG2': '高尿酸風險',
+                      'ALDH2': '酒精代謝差',
+                      'Azathioprine': '藥物代謝酵素TPMT功能中/慢速',
+                      'CADASIL': '遺傳性腦部小動脈血管病變風險',
+                      'clopidogrel': '藥物代謝酵素CYP2C19功能慢速',
+                      'Azathioprine': '藥物代謝酵素TPMT功能中/慢速',
+                      'FH': '家族性高膽固醇血症風險基因',
+                      'FTO': '容易導致肥胖',
+                      'HBB': '乙型(β)地中海貧血基因',
+                      'MODY': '年青人成年型糖尿病風險基因',
+                      'FH': '家族性高膽固醇血症風險基因',
+                      'FTO': '容易導致肥胖',
+                      'HBB': '乙型(β)地中海貧血基因',
+                      'MODY': '年青人成年型糖尿病風險基因',
+
+                    },
+                operators: ['equal', 'not_equal']
+            }, {
+                id: '開立日',
+                label: '上傳時間',
+                type: 'date',
+                operators: ['equal', 'not_equal'],
+                validation: {
+                    format: 'MM/DD/YYYY'
+                },
+                plugin: 'datepicker',
+                plugin_config: {
+                    todayBtn: 'linked',
+                    todayHighlight: true,
+                    autoclose: true
+                }
+            }]

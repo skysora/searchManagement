@@ -1,0 +1,74 @@
+{% load static %}
+<html>
+    <head>
+        <title>ActionLog</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'blog/vendor/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/vendor/fonts/circular-std/style.css' %}", type="text/css">
+        <link rel="stylesheet" href="{% static 'blog/libs/css/style.css' %}", type="text/css">
+        <link rel="stylesheet" href="{% static 'blog/vendor/fonts/fontawesome/css/fontawesome-all.css' %}", type="text/css">
+    </head>
+    <body>
+        {% csrf_token %}
+        {% if request.user.is_authenticated %}
+        <!-- ============================================================== -->
+        <!-- main wrapper -->
+        <!-- ============================================================== -->
+        <div class="dashboard-main-wrapper">
+            <!-- ============================================================== -->
+            <!-- navbar -->
+            <!-- ============================================================== -->
+            {% include 'nav.html' %}
+            <!-- ============================================================== -->
+            <!-- end navbar -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- left sidebar -->
+            <!-- ============================================================== -->
+            {% include 'side.html' %}
+            <!-- ============================================================== -->
+            <!-- end left sidebar -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- wrapper  -->
+            <!-- ============================================================== -->
+            <div class="dashboard-wrapper">
+                <div class="container-fluid dashboard-content">
+                    <div class="container">
+                        <table >
+                            <tr>
+                                <th>User</th>
+                                <th>Action</th>
+                                <th>Datetime</th>
+                            </tr>
+                            {% for action in actionList %}
+                            <tr>
+                                <td>{{action.user}}</td>
+                                <td>{{action.action}}</td>
+                                <td>{{action.datatime}}</td>
+                            </tr>
+                            
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <p>您尚未登入喔~<a href="/login/">登入</a></p>
+            {% endif %}
+        </div>
+    </body>
+    <!-- ============================================================== -->
+            <!-- Optional JavaScript -->
+            <!-- jquery 3.3.1 -->
+
+            <script src="{% static 'blog/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+            <!-- bootstap bundle js -->
+            <script src="{% static 'blog/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+            <!-- slimscroll js -->
+
+            <script src="{% static 'blog/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
+             <!-- main js -->
+
+            <script src="{% static 'blog/libs/js/main-js.js' %}"></script>
+</html>

@@ -1,0 +1,403 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Stock Search</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'blog/vendor/bootstrap/css/bootstrap.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'blog/vendor/fonts/circular-std/style.css' %}", type="text/css">
+    <link rel="stylesheet" href="{% static 'blog/libs/css/style.css' %}", type="text/css">
+    
+    <link rel="stylesheet" href="{% static 'blog/vendor/fonts/fontawesome/css/fontawesome-all.css' %}", type="text/css">
+
+
+    <link href="{% static 'blog/js/query-builder.default.min.css' %}" rel="stylesheet" />
+
+    <!-- scripts -->
+    <script src="{% static 'blog/js/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'blog/js/popper.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/js/query-builder.standalone.min.js' %}"></script>
+    <!-- for datatables -->
+
+    <link href="{% static 'blog/css/jquery-ui.css' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/dataTables.bootstrap4.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/bootstrap-toggle.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/bootstrap-select.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'blog/css/buttons.dataTables.min.css' %}" rel="stylesheet" />
+    <!-- js -->
+    <script src="{% static 'blog/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap-toggle.min.js' %}"></script>
+    <script src="{% static 'blog/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'blog/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'blog/js/jquery.dataTables.min_1.6.0.js' %}"></script>
+    <script src="{% static 'blog/js/jquery.dataTables.min_1.6.2.js' %}"></script>
+    <script src="{% static 'blog/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'blog/js/vfs_fonts.js' %}"></script>
+    <script src="{% static 'blog/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'blog/js/buttons.colVis.min.js' %}"></script>
+    <script src="{% static 'blog/js/moment.min.js' %}"></script>
+    
+
+    <style>
+        .query-builder, .query-builder * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .query-builder {
+            font-family: sans-serif;
+        }
+        
+        .query-builder .hide {
+            display: none;
+        }
+        
+        .query-builder .pull-right {
+            float: right !important;
+        }
+        
+        .query-builder .btn {
+            text-transform: none;
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            touch-action: manipulation;
+            cursor: pointer;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        
+        .query-builder .btn.focus, .query-builder .btn:focus, .query-builder .btn:hover {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .query-builder .btn.active, .query-builder .btn:active {
+            background-image: none;
+            outline: 0px none;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.125) inset;
+        }
+        
+        .query-builder .btn-success {
+            color: #FFF;
+            background-color: #5CB85C;
+            border-color: #4CAE4C;
+        }
+        
+        .query-builder .btn-primary {
+            color: #FFF;
+            background-color: #337AB7;
+            border-color: #2E6DA4;
+        }
+        
+        .query-builder .btn-danger {
+            color: #FFF;
+            background-color: #D9534F;
+            border-color: #D43F3A;
+        }
+        
+        .query-builder .btn-success.active, .query-builder .btn-success.focus,
+        .query-builder .btn-success:active, .query-builder .btn-success:focus,
+        .query-builder .btn-success:hover {
+            color: #FFF;
+            background-color: #449D44;
+            border-color: #398439;
+        }
+        
+        .query-builder .btn-primary.active, .query-builder .btn-primary.focus,
+        .query-builder .btn-primary:active, .query-builder .btn-primary:focus,
+        .query-builder .btn-primary:hover {
+            color: #FFF;
+            background-color: #286090;
+            border-color: #204D74;
+        }
+        
+        .query-builder .btn-danger.active, .query-builder .btn-danger.focus,
+        .query-builder .btn-danger:active, .query-builder .btn-danger:focus,
+        .query-builder .btn-danger:hover {
+            color: #FFF;
+            background-color: #C9302C;
+            border-color: #AC2925;
+        }
+        
+        .query-builder .btn-group {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .query-builder .btn-group > .btn {
+            position: relative;
+            float: left;
+        }
+        
+        .query-builder .btn-group > .btn:first-child {
+            margin-left: 0px;
+        }
+        
+        .query-builder .btn-group > .btn:first-child:not(:last-child) {
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+        
+        .query-builder .btn-group > .btn:last-child:not(:first-child) {
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+        }
+        
+        .query-builder .btn-group .btn + .btn, .query-builder .btn-group .btn + .btn-group,
+        .query-builder .btn-group .btn-group + .btn, .query-builder .btn-group .btn-group + .btn-group {
+            margin-left: -1px;
+        }
+        
+        .query-builder .btn-xs, .query-builder .btn-group-xs > .btn {
+            padding: 1px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    {% csrf_token %}
+    {% if request.user.is_authenticated %}
+    <!-- navbar -->
+    <!-- ============================================================== -->
+    {% include 'nav.html' %}
+    <!-- ============================================================== -->
+    <!-- end navbar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- left sidebar -->
+    <!-- ============================================================== -->
+    {% include 'side.html' %}
+    <!-- ============================================================== -->
+    <!-- end left sidebar -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        {% include 'nav.html' %}
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        {% include 'side.html' %}
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+                <div class="container-fluid dashboard-content">
+                    <div class="container">
+                        <div class="main">
+                            <h2>Stock Search</h2>
+                            <div id="builder-basic" class="query-builder" style="width: 100%; display: inline-block;"></div>
+                            <br><br>
+                            <button class="btn btn-primary" onclick="Search()" type="button" id="search">Search</button>
+                            <br><br>
+                            <table class="table hover" id="table"></table>
+                            <!-- 編輯頁面 -->
+                            <div id="edit" class="modal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalLabel">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <form action="{% url 'updateData' %}" style="width: 100%;" method="POST">
+                                        <div class="modal-content">
+                                            {% csrf_token %}
+                                            {% include 'element/editData.html' %}
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- 新增頁面 -->
+                            <div id="dialog-form" title="Create new Data">
+                              <!-- <p class="validateTips">All form fields are required.</p> -->
+                              <form>
+                                <fieldset>
+
+                                    {% include 'element/addItem.html' %}
+                                  <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                                  <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                                </fieldset>
+                              </form>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>您尚未登入喔~<a href="/login/">登入</a></p>
+    {% endif %}
+
+    <script>
+    function Search(){
+        $.ajax({
+                type: 'POST',
+                url: "{% url 'searchTable' %}",
+                data: { data: $('#builder-basic').queryBuilder('getRules')},
+                dataType: 'json',
+                success: function(res) {
+                    console.log(res)
+                    table.clear().rows.add(res).draw();
+                }
+        });
+    }
+    function addUser() {
+        $.ajax({
+                type: 'POST',
+                url: "{% url 'uploadData' %}",
+                data: { 來源: document.getElementById('add_來源').value,
+                        醫師_開立者: document.getElementById('add_醫師／開立者').value,
+                        時段: document.getElementById('add_時段').value,
+                        科別: document.getElementById('add_科別').value,
+                        診間: document.getElementById('add_診間').value,
+                        就診號: document.getElementById('add_就診號').value,
+                        身份證: document.getElementById('add_身份證').value,
+                        索引號_x: document.getElementById('add_索引號_x').value,
+                        姓名: document.getElementById('add_姓名').value,
+                        GUID: document.getElementById('add_GUID').value,
+                        DNA管號: document.getElementById('add_拒絕註記').value,
+                        拒絕註記: document.getElementById('add_DNA管號').value,
+                        檢體編號_x: document.getElementById('add_檢體編號_x').value,
+                        樣本代碼: document.getElementById('add_樣本代碼').value},
+                dataType: 'json',
+                success: function(res) {
+                    console.log(res)
+                }
+        });
+        dialog.dialog( "close" );
+    }
+    dialog = $( "#dialog-form" ).dialog({
+          autoOpen: false,
+          height: 400,
+          width: 1000,
+          modal: true,
+          buttons: {
+            "Create an account": addUser,
+            Cancel: function() {
+              dialog.dialog( "close" );
+            }
+          }
+    });
+    $(function() {
+        $.ajaxSetup({
+            data: { csrfmiddlewaretoken: '{{ csrf_token }}' }
+        });
+        //================================================
+        $('#builder-basic').queryBuilder({
+            // plugins: ['bt-tooltip-errors'],
+            allow_groups: false,
+            {% include 'element/fliterList.html' %} 
+        });
+        //================================================
+        $('#builder-basic').removeClass("form-inline");
+        table = $('#table').DataTable({
+            orderCellsTop: true,
+            fixedHeader: true,
+            dom: 'Bfrtip',
+            scrollX: true,
+            lengthMenu: [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            buttons: [
+                'pageLength',
+                'csvHtml5',
+                'colvis',
+                {% if request.user.is_superuser %}
+                    // {
+                    //     text: 'ADD',
+                    //     action: function ( dt ) {
+                    //         dialog.dialog( "open" )
+                    //     }
+                    // }
+                {% else %}
+                {% endif %}
+            ],
+            columns: [{
+                    title: "Action",
+                    {% if request.user.is_superuser %}
+                    mRender: function(data, type, row) {
+                        return ''
+                        // return `<button class="btn btn-secondary table-edit open-Dialog" data-toggle="modal" data-target="#edit"
+                        //     data-來源="` + row['來源'] + ` "
+                        //     data-開立日="` + row['開立日'] + ` "
+                        //     data-醫師／開立者="` + row['醫師／開立者'] + ` "
+                        //     data-時段="` + row['時段'] + ` "
+                        //     data-科別="` + row['科別'] + ` "
+                        //     data-診間="` + row['診間'] + ` "
+                        //     data-就診號="` + row['就診號'] + ` "
+                        //     data-身份證="` + row['身份證'] + ` "
+                        //     data-索引號_x="` + row['索引號_x'] + ` "
+                        //     data-姓名="` + row['姓名'] + ` "
+                        //     data-GUID="` + row['GUID'] + ` "
+                        //     data-上傳="` + row['上傳'] + ` "
+                        //     data-上傳時間="` + row['上傳時間'] + ` "
+                        //     data-拒絕註記="` + row['拒絕註記'] + ` "
+                        //     data-工作號_合併="` + row['工作號_合併'] + ` "
+                        //     data-DNA管號="` + row['DNA管號'] + ` "
+                        //     data-檢體編號_x="` + row['檢體編號_x'] + ` "
+                        //     data-樣本代碼="` + row['樣本代碼'] + ` "
+                        //     data-ID="` + row['ID'] + `">Edit</button>` +
+                        //     '<button class="btn btn-secondary" onclick="#">Remove</button>'
+                    }          
+                    {% else %}
+                    mRender: function(data, type, row) {
+                        return ''
+                    }
+                    {% endif %}
+                     
+                },
+                {% include 'element/tableList.html' %} 
+            ]
+        });
+        table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+
+        $(document).on("click", ".open-Dialog", function() {
+            document.getElementsByName('來源')[0].placeholder=$(this).data("來源");
+            document.getElementsByName('開立日')[0].placeholder=$(this).data("開立日");
+            document.getElementsByName('醫師／開立者')[0].placeholder=$(this).data("醫師／開立者");
+            document.getElementsByName('科別')[0].placeholder=$(this).data("科別");
+            document.getElementsByName('診間')[0].placeholder=$(this).data("診間");
+            document.getElementsByName('就診號')[0].placeholder=$(this).data("就診號");
+            document.getElementsByName('身份證')[0].placeholder=$(this).data("身份證");
+            document.getElementsByName('索引號_x')[0].placeholder=$(this).data("索引號_x");
+            document.getElementsByName('姓名')[0].placeholder=$(this).data("姓名");
+            document.getElementsByName('時段')[0].placeholder=$(this).data("時段");
+            document.getElementsByName('GUID')[0].placeholder=$(this).data("guid");
+            document.getElementsByName('上傳')[0].placeholder=$(this).data("上傳");
+            document.getElementsByName('上傳時間')[0].placeholder=$(this).data("上傳時間");
+            document.getElementsByName('拒絕註記')[0].placeholder=$(this).data("拒絕註記");
+            document.getElementsByName('工作號_合併')[0].placeholder=$(this).data("工作號_合併");
+            document.getElementsByName('DNA管號')[0].placeholder=$(this).data("dna管號");
+            document.getElementsByName('檢體編號_x')[0].placeholder=$(this).data("檢體編號_x");
+            document.getElementsByName('樣本代碼')[0].placeholder=$(this).data("樣本代碼");
+            document.getElementsByName('ID')[0].placeholder=$(this).data("id");
+        });
+    })
+    </script>
+    <!-- end for datatables -->
+</body>
+
+</html>
