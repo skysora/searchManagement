@@ -13,7 +13,6 @@ services:
       volumes:
          - ./sql:/docker-entrypoint-initdb.d
          - ./sql:/var/lib/mysql
-         - ./sql/etc/mysql:/etc/mysql
       networks:
         - my-network
       restart: always
