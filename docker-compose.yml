@@ -1,0 +1,36 @@
+version: '2.2'
+services:
+  db:
+      image: mariadb/server:10.3
+      container_name: 'TPMI_db'
+      environment:
+        - MYSQL_ROOT_PASSWORD=vghtc_123456
+        - MYSQL_USER="root"
+        - MYSQL_DATABASE:TBMI
+        - MYSQL_PASSWORD=vghtc_123456
+      ports:
+        - "3306:3306"
+      volumes:
+         - ./sql:/docker-entrypoint-initdb.d
+         - ./sql:/var/lib/mysql
+         - ./sql/etc/mysql:/etc/mysql
+      networks:
+        - my-network
+      restart: always
+  app:
+      build: .
+      container_name: 'TPMI_web'
+      depends_on:
+            - db
+      ports:
+        - "7777:8000"
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/code
+      networks:
+        - my-network
+      restart: always
+networks:
+  my-network:
+    driver: bridge
+

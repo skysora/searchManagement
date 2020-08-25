@@ -10,7 +10,12 @@ from django.http import HttpResponse
 import json
 from .form import *
 from .models import *
+import pymysql
 # Create your views here.
+
+#db connect
+#db = pymysql.connect(host="db" ,user="root",passwd="vghtc_123456",db="TPMI")
+
 def login(request):
     loginFail=''
     if (request.method == 'POST'):
@@ -33,7 +38,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect('/')   
+    return HttpResponseRedirect('/')
 def main(request):
     return render(request, 'search.html', {})
 
@@ -56,18 +61,17 @@ def combineSQL(search_idList,operatorsList,keyWordList,condition,tableName,other
 
     for combineTableIndex in range(len(othertableSearchList)):
         if(combineTableIndex == 0):
-            sql += "(SELECT * FROM " + str(tableName) + " INNER JOIN " + str(othertableSearchList[combineTableIndex])
+            sql += "(" + str(tableName) + " INNER JOIN " + str(othertableSearchList[combineTableIndex])
         else:
             sql += ", " + str(othertableSearchList[combineTableIndex])
     for combineTableIndex in range(len(othertableSearchList)):
         if(combineTableIndex == 0):
-            sql += " ON "+str(othertableSearchList[combineTableIndex])+".GUID == user.GUID AND "
+            sql += " ON "+str(othertableSearchList[combineTableIndex])+".GUID = user.GUID AND "
         else:
-            sql += str(othertableSearchList[combineTableIndex])+".GUID == user.GUID AND "
+            sql += str(othertableSearchList[combineTableIndex])+".GUID = user.GUID AND "
         if(combineTableIndex == len(othertableSearchList)-1):
-            sql +="user.GUID == user.GUID"
+            sql +="user.GUID = user.GUID"
             sql = sql  + ") WHERE "
-    print(sql)
     for index in range(len(search_idList)):
         if (search_idList[index] == '開立日'):
             keyWordList[index]=keyWordList[index].split('/')[2]+keyWordList[index].split('/')[0]+keyWordList[index].split('/')[1]
@@ -76,7 +80,7 @@ def combineSQL(search_idList,operatorsList,keyWordList,condition,tableName,other
                 operatorsList[index] = 'LIKE'
         if(operatorsList[index] != "LIKE"):
             factor += '{} {} (\'{}\') {} '.format(search_idList[index],operatorsList[index],keyWordList[index],condition)
-        else:    
+        else:
             factor += '{} {} \'%{}%\' {} '.format(search_idList[index],operatorsList[index],keyWordList[index],condition)
         
     return sql + factor[:factor.rfind('AND ')][:factor[:factor.rfind('AND ')].rfind('OR ')]
@@ -105,15 +109,25 @@ def searchTable(request):
                     operatorsList.append(dict(request.POST)["data[rules]["+str(count)+"][operator]"][0].replace("equal","IN").replace("in","LIKE").replace("not_","NOT "))
                 condition = dict(request.POST)['data[condition]'][0]
             sqlInstruction = combineSQL(search_idList,operatorsList,keyWordList,condition,"user",othertableSearchList)
-            #get data
+            #get sql data
+            print(sqlInstruction)
+            try:
+                db = pymysql.connect(host="db" ,user="root",passwd="vghtc_123456",db="TPMI")
+                cursor = db.cursor()
+                cursor.execute(sqlInstruction)
+                data = cursor.fetchall()
+                db.close()
+
+                for row in list(data):
+                    dataList.append({
+                        "來源":row[0],"開立日":row[1],"開立者":row[2],"科別":row[3],"就診號":row[4],"身份證":row[5],"索引號":row[6],"姓名":row[7],"GUID":row[8],"拒絕註記":row[9],"工作號":row[10],"工作號_new":row[11],"DNA管號":row[12],"檢體編號_x":row[13],"樣本代碼":row[14],"all_comment":row[15]
+                    })
+            except:
+                print('dataISnull')
+                dataList = []
+            #get sqllite data
             dbPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/db.sqlite3"
             conn = sqlite3.connect(dbPath)
-            print(sqlInstruction)
-            cursor = conn.execute(sqlInstruction)
-            for row in cursor:
-                dataList.append({
-                    "來源":row[1],"開立日":row[2],"開立者":row[3],"科別":row[4],"就診號":row[5],"身份證":row[6],"索引號":row[7],"姓名":row[8],"GUID":row[9],"拒絕註記":row[10],"工作號":row[11],"工作號_new":row[12],"DNA管號":row[13],"檢體編號_x":row[14],"樣本代碼":row[15],"all_comment":row[16]
-                    })
             # get user name
             user= conn.execute("SELECT username FROM auth_user WHERE id == " + str(request.session['_auth_user_id']))
             for row in user:
@@ -140,14 +154,14 @@ def searchActionTable(request):
                 operatorsList.append(dict(request.POST)["data[rules]["+str(count)+"][operator]"][0].replace("equal","IN").replace("in","LIKE").replace("not_","NOT "))
                 keyWordList.append(dict(request.POST)["data[rules]["+str(count)+"][value]"][0])
             sqlInstruction = combineSQL(search_idList,operatorsList,keyWordList,condition,"blog_action",[])
-            print(sqlInstruction)
             #get data
             dbPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/db.sqlite3"
             conn = sqlite3.connect(dbPath)
             cursor = conn.execute(sqlInstruction)
             for row in cursor:
+                print(row)
                 dataList.append({
-                    "datatime":row[1],"action":row[2],"user":row[3], 
+                    "datatime":row[1],"action":row[2],"user":row[3],
                 })
             # get user name
             user= conn.execute("SELECT username FROM auth_user WHERE id == " + str(request.session['_auth_user_id']))
@@ -187,5 +201,6 @@ def actionLog(request):
         return render(request, 'actionLog.html', {'actionList':actionList})
     except:
         return render(request, 'actionLog.html', {})
+
 
 
