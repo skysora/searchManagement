@@ -54,11 +54,11 @@ $ python3 manage.py createsuperuser
 
 ## updateFilterList-flags
 
-```sh
+After you import table on database add your item and if you want more can reference [here](https://querybuilder.js.org)
+
 $ vim ./TPMI_searchManagement/blog/templates/element/fliterList.html
 
 ```
-Add Your item and if you want more can reference [here]
 
 Example:
 ```
