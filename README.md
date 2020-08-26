@@ -34,7 +34,7 @@
 
 
 
-Before installing, download and install [docker](https://www.docker.com) , docker-compose and Django [sqlite3 file].
+Before installing, download and install [docker](https://www.docker.com) , docker-compose and Django [sqlite3 file](https://drive.google.com/file/d/1ySg70xu_Xnq1cadPS6LRw51GAa8B0NS4/view?usp=sharing).
 
 Installation is done using the
 [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
