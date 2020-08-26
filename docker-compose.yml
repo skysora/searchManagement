@@ -1,7 +1,7 @@
 version: '2.2'
 services:
   db:
-      image: mariadb/server:10.3
+      image: mysql:latest
       container_name: 'TPMI_db'
       environment:
         - MYSQL_ROOT_PASSWORD=vghtc_123456

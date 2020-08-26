@@ -53,26 +53,28 @@ def project(request):
 def search(request):
     return render(request, 'search.html', {})
 def combineSQL(search_idList,operatorsList,keyWordList,condition,tableName,othertableSearchList):
-    sql = "SELECT * FROM "
+    sql = "SELECT * FROM " + str(tableName)
     factor = ""
     OnAppend=[]
-    if(len(othertableSearchList) == 0):
-        sql+= str(tableName) + "  WHERE "
 
+    # for combineTableIndex in range(len(othertableSearchList)):
+    #     if(combineTableIndex == 0):
+    #         sql += "( " + str(tableName) + " INNER JOIN " + str(othertableSearchList[combineTableIndex])
+    #     else:
+    #         sql += ", " + str(othertableSearchList[combineTableIndex])
+    # for combineTableIndex in range(len(othertableSearchList)):
+    #     if(combineTableIndex == 0):
+    #         sql += " ON "+str(othertableSearchList[combineTableIndex])+".GUID = user.GUID AND "
+    #     else:
+    #         sql += str(othertableSearchList[combineTableIndex])+".GUID = user.GUID AND "
+    #     if(combineTableIndex == len(othertableSearchList)-1):
+    #         sql +="user.GUID = user.GUID"
+    #         sql = sql  + ") WHERE "
     for combineTableIndex in range(len(othertableSearchList)):
-        if(combineTableIndex == 0):
-            sql += "(" + str(tableName) + " INNER JOIN " + str(othertableSearchList[combineTableIndex])
-        else:
-            sql += ", " + str(othertableSearchList[combineTableIndex])
-    for combineTableIndex in range(len(othertableSearchList)):
-        if(combineTableIndex == 0):
-            sql += " ON "+str(othertableSearchList[combineTableIndex])+".GUID = user.GUID AND "
-        else:
-            sql += str(othertableSearchList[combineTableIndex])+".GUID = user.GUID AND "
-        if(combineTableIndex == len(othertableSearchList)-1):
-            sql +="user.GUID = user.GUID"
-            sql = sql  + ") WHERE "
+        sql += " INNER JOIN " + othertableSearchList[combineTableIndex]  + " ON "+str(othertableSearchList[combineTableIndex])+".GUID = user.GUID "
     for index in range(len(search_idList)):
+        if(index == 0 ):
+            sql += " WHERE "
         if (search_idList[index] == '開立日'):
             keyWordList[index]=keyWordList[index].split('/')[2]+keyWordList[index].split('/')[0]+keyWordList[index].split('/')[1]
         if(search_idList[index] == 'datatime'):
