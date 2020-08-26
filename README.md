@@ -25,9 +25,9 @@
 
 
 
-### introduction
+## Introduction
 
-
+* 123
 
 
 ## Install
@@ -41,8 +41,8 @@ Installation is done using the
 
 ```sh
 $ git clone https://github.com/skysora/TPMI_searchManagement
-cd ./TPMI_searchManagement
-docker-compose up --build
+$ cd ./TPMI_searchManagement
+$ docker-compose up --build
 ```
 ## createAdmin-options
 
