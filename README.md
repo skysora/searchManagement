@@ -42,7 +42,7 @@ $ git clone https://github.com/skysora/TPMI_searchManagement
 $ cd ./TPMI_searchManagement
 $ docker-compose up --build
 ```
-You cane access http://<ip address>:7777
+You cane access http://ip address:7777
   
 <a href=""><img src="img/login.png" title="FVCproductions" alt="FVCproductions"></a>
 ## createAdmin-options
