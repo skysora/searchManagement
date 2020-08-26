@@ -1,9 +1,9 @@
 # TPMI_searchManagement
 
-![](https://img.shields.io/static/v1?label=python&message=3.7&color=blue)
-![](https://img.shields.io/static/v1?label=mysqlh&message=8.X&color=<COLOR>)
-[![](https://img.shields.io/static/v1?label=Django&message=3.0.3&color=green)]
-[![Docker][coveralls-image]][coveralls-url]
+![](https://img.shields.io/static/v1?label=python&message=3.7&color=yellow)
+![](https://img.shields.io/static/v1?label=mysql&message=8.X&color=red)
+![](https://img.shields.io/static/v1?label=Django&message=3.0.3&color=green)
+![](https://img.shields.io/static/v1?label=Docker&message=3.0.3&color=blue)
 
 <a href=""><img src="img/main.png" title="FVCproductions" alt="FVCproductions"></a>
 
