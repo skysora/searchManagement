@@ -15,37 +15,43 @@
 
 ## Table of Contents
 
-- [Install](#install)
 - [Introduction](#introduction)
-- [Establishing connections](#establishing-connections)
+- [Install](#install)
 - [function](#connection-options)
-  - [SSL options](#ssl-options)
-  - [Connection flags](#connection-flags)
+  - [create Admin account](#createAdmin-options)
+  - [update FilterList](#updateFilterList-flags)
 - [Todo](#todo)
+
+
+
+
+### introduction
+
+
+
 
 ## Install
 
-This is a [Node.js](https://nodejs.org/en/) module available through the
-[npm registry](https://www.npmjs.com/).
 
-Before installing, [download and install Node.js](https://nodejs.org/en/download/).
-Node.js 0.6 or higher is required.
+
+Before installing, download and install [docker](https://www.docker.com) , docker-compose and Django [sqlite3 file].
 
 Installation is done using the
 [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
 
 ```sh
-$ npm install mysql
+$ git clone https://github.com/skysora/TPMI_searchManagement
+cd ./TPMI_searchManagement
+docker-compose up --build
 ```
+## createAdmin-options
 
-For information about the previous 0.9.x releases, visit the [v0.9 branch][].
 
-Sometimes I may also ask you to install the latest version from Github to check
-if a bugfix is working. In this case, please do:
 
-```sh
-$ npm install mysqljs/mysql
-```
 
-[v0.9 branch]: https://github.com/mysqljs/mysql/tree/v0.9
+
+
+
+
+## updateFilterList-flags
 
