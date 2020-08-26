@@ -4,7 +4,6 @@
 *.pyc
 __pycache__/
 /.vscode
-db.sqlite3
 /envname
 /NGS_dataBase
 /sql
