@@ -61,7 +61,7 @@ $ vim ./TPMI_searchManagement/blog/templates/element/fliterList.html
 ```
 
 Example:
-```
+```sh
 {
   id: '疾病',
   label: '疾病',
