@@ -42,14 +42,37 @@ $ git clone https://github.com/skysora/TPMI_searchManagement
 $ cd ./TPMI_searchManagement
 $ docker-compose up --build
 ```
+You cane access http://ip address:7777
+  
+<a href=""><img src="img/login.png" title="FVCproductions" alt="FVCproductions"></a>
 ## createAdmin-options
 
-
-
-
-
-
-
+```sh
+$ cd ./TPMI_searchManagement
+$ python3 manage.py createsuperuser
+```
 
 ## updateFilterList-flags
+
+After you import table on database add your item and if you want more can reference [here](https://querybuilder.js.org)
+
+$ vim ./TPMI_searchManagement/blog/templates/element/fliterList.html
+
+```
+
+Example:
+```sh
+{
+  id: '疾病',
+  label: '疾病',
+  type: 'string',
+  values: {
+        <‘DatabasTableName’ : ‘欲顯示欄位名稱’>
+  }
+  operators: ['equal', 'not_equal', 'in']
+ }
+```
+## Todo
+
+
 
