@@ -20,6 +20,7 @@
 - [function](#connection-options)
   - [create Admin account](#createAdmin-options)
   - [update FilterList](#updateFilterList-flags)
+-[Analysis]
 - [Todo](#todo)
 
 
@@ -27,14 +28,14 @@
 
 ## Introduction
 
-* 123
+* 此專案將提供搜尋的樣板以及分析的樣板。
 
 
 ## Install
 
 
 
-Before installing, download and install [docker](https://www.docker.com) , docker-compose and Django [sqlite3 file](https://drive.google.com/file/d/1ySg70xu_Xnq1cadPS6LRw51GAa8B0NS4/view?usp=sharing).
+Before installing, download and install [docker](https://www.docker.com) , docker-compose and Django [sqlite3 file](https://drive.google.com/file/d/1Lvtk0g6bjKr9brvTdsfL5NQmS79oJFdG/view?usp=sharing).
 
 
 ```sh
@@ -72,6 +73,9 @@ Example:
   operators: ['equal', 'not_equal', 'in']
  }
 ```
+## Analysis
+透過測試資料我可以從圖表中發現在鐵達尼號存活的人(1)票價比較高
+<a href=""><img src="img/analysis.png" title="FVCproductions" alt="FVCproductions"></a>
 ## Todo
 
 
