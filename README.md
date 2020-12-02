@@ -43,7 +43,7 @@ $ git clone https://github.com/skysora/TPMI_searchManagement
 $ cd ./TPMI_searchManagement
 $ docker-compose up --build
 ```
-You cane access http://ip address:7777
+You cane access http://ip address:7777 預設帳號:root密碼:root
   
 <a href=""><img src="img/login.png" title="FVCproductions" alt="FVCproductions"></a>
 ## createAdmin-options
@@ -76,6 +76,7 @@ Example:
 ## Analysis
 透過測試資料我可以從圖表中發現在鐵達尼號存活的人(1)票價比較高
 <a href=""><img src="img/analysis.png" title="FVCproductions" alt="FVCproductions"></a>
+<a href=""><img src="img/analysis1.png" title="FVCproductions" alt="FVCproductions"></a>
 ## Todo
 
 
