@@ -9,6 +9,7 @@ RUN \
 apt-get update -y && \
 apt-get install python3-pip -y && \
 pip3 install bs4 && \
+pip3 install numpy && \
 pip3 install pymysql && \
 pip3 install requests && \
 apt-get install python3-lxml -y && \

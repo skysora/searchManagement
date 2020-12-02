@@ -11,6 +11,7 @@ import json
 from .form import *
 from .models import *
 import pymysql
+from django.http import JsonResponse
 # Create your views here.
 
 #db connect
@@ -203,6 +204,16 @@ def actionLog(request):
         return render(request, 'actionLog.html', {'actionList':actionList})
     except:
         return render(request, 'actionLog.html', {})
+def analysis(request):
+    try:
+        return render(request, 'analysis.html',{})
+    except:
+        return render(request, 'analysis.html',{})
 
-
-
+#testing
+def getChartData(request):
+    print("============================getChartData============================")
+    with open('json/testData.json',encoding='utf8',mode='r') as file:
+        data = json.load(file)
+    # print(data)
+    return HttpResponse(json.dumps(data), content_type="application/json")

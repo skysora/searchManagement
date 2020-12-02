@@ -1,0 +1,281 @@
+{% load static %}
+<head>
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'blog/vendor/bootstrap/css/bootstrap.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'blog/vendor/fonts/circular-std/style.css' %}", type="text/css">
+    <link rel="stylesheet" href="{% static 'blog/libs/css/style.css' %}", type="text/css">
+    
+    <link rel="stylesheet" href="{% static 'blog/vendor/fonts/fontawesome/css/fontawesome-all.css' %}", type="text/css">
+
+
+    <link href="{% static 'blog/js/query-builder.default.min.css' %}" rel="stylesheet" />   
+    <!--D3.js-->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    
+    <!--C3.js-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.0/c3.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.0/c3.min.js"></script>
+    
+    <!--treeview-->
+    <link href="https://cdn.jsdelivr.net/npm/patternfly-bootstrap-treeview@2.1.0/dist/bootstrap-treeview.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/patternfly-bootstrap-treeview@2.1.8/dist/bootstrap-treeview.min.js"></script>
+    <!-- --------- -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css"/>
+    
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+<!-- --------- -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/b-1.5.6/b-html5-1.5.6/r-2.2.2/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/b-1.5.6/b-html5-1.5.6/r-2.2.2/datatables.min.js"></script>
+    
+    <style type="text/css"></style>
+    
+</head>
+<script>
+function initDataTable(){
+$('#scoreboardtable').DataTable({
+    
+			"language": {
+				"paginate": {
+					"previous": "上一頁",
+					"next": "下一頁",
+					"first": "第一頁"
+				},
+				"info": "顯示第 _START_ 到 _END_ 筆資料",
+				"infoEmpty": "顯示第 0 到 0 筆資料",
+				"zeroRecords": "找不到這筆資料呀!",
+				"emptyTable": "還沒有資料唷",
+				"lengthMenu": '每頁顯示 <select>'+
+							  '<option value="10">10</option>'+
+							  '<option value="20">20</option>'+
+							  '<option value="30">30</option>'+
+							  '<option value="40">40</option>'+
+							  '<option value="50">50</option>'+
+							  '<option value="-1">所有</option>'+
+							  '</select> 筆資料',
+				"search": "搜尋:"
+			},
+			destroy:true,
+            dom: 'Bfrtip',
+                        buttons: [{
+                            'extend': 'excel',
+                            'text': '導出Excel檔案',//定義出Excel檔案文字 
+                            'className': 'btn btn-primary', //按鈕的Class樣式
+                            'exportOptions': { 
+                                'modifier': {  
+                                    'page': 'all'  
+                                }
+                            }
+                        }
+                        ]
+		});        
+}
+//下載
+function downloadToExcel(){
+    var table = $('#scoreboardtable').DataTable();
+ 
+    new $.fn.dataTable.Buttons( table, {
+        buttons: [
+            'copy', 'excel', 'pdf'
+        ]
+    } );
+}
+function getChartData(){
+    $.ajax({
+        url: "{% url 'getChartData' %}",
+        type: 'GET',
+        dataType: 'json',
+        timeout: 5000,
+        success: function(result) {
+                    var data = []
+                    var c3Data=[['unSurvived'],['Survived']]
+                    var unSurvived=0,Survived=0
+                    // console.log(result)
+                    for(const [key, value] of Object.entries(result)){
+                        let oneData = []
+                        oneData.push(value['PassengerId'])
+                        oneData.push(value['Survived'])
+                        oneData.push(value['Pclass'])
+                        oneData.push(value['Name'])
+                        oneData.push(value['Sex'])
+                        oneData.push(value['Age'])
+                        oneData.push(value['SibSp'])
+                        oneData.push(value['Parch'])
+                        oneData.push(value['Ticket'])
+                        oneData.push(value['Fare'])
+                        oneData.push(value['Cabin'])
+                        oneData.push(value['Embarked'])
+                        
+                        data.push(oneData)
+                        if(value['Survived']=='1'){
+                            c3Data[1].push(Number(value['Fare']))    
+                        }else{
+                            c3Data[0].push(Number(value['Fare']))
+                        }
+                    }
+                    $('#scoreboardtable').DataTable( {
+                        "language": {
+                            "paginate": {
+                                "previous": "上一頁",
+                                "next": "下一頁",
+                                "first": "第一頁"
+                            },
+                            "info": "顯示第 _START_ 到 _END_ 筆資料",
+                            "infoEmpty": "顯示第 0 到 0 筆資料",
+                            "zeroRecords": "找不到這筆資料呀!",
+                            "emptyTable": "還沒有資料唷",
+                            "lengthMenu": '每頁顯示 <select>'+
+                                          '<option value="10">10</option>'+
+                                          '<option value="20">20</option>'+
+                                          '<option value="30">30</option>'+
+                                          '<option value="40">40</option>'+
+                                          '<option value="50">50</option>'+
+                                          '<option value="-1">所有</option>'+
+                                          '</select> 筆資料',
+                            "search": "搜尋:"
+                        },
+                        data:data,
+                        destroy:true,
+                        dom: 'Bfrtip',
+                        buttons: [{
+                            'extend': 'excel',
+                            'text': '導出Excel檔案',//定義出Excel檔案文字
+                            'className': 'btn btn-primary', //按鈕的Class樣式
+                            'exportOptions': { 
+                                'modifier': {  
+                                    'page': 'all'  
+                                }
+                            }
+                        }
+                        ]
+                    });
+
+                    setChart(c3Data);
+                }
+    });
+}
+function setChart(c3col){
+    var chart = c3.generate({
+        bindto: '#chart',
+        data: {
+            json: c3col
+        },
+        axis: {
+            x: {
+                label: 'PassengerId',
+            },
+            y: {
+                label: '票價'
+            }
+        },
+        axis: {
+            y: {
+                max: 512,
+                min: 0,
+                // Range includes padding, set 0 if no padding needed
+                // padding: {top:0, bottom:0}
+            }
+        },
+        color: {
+            pattern:['#1f77b4','#fd7e14']
+        },
+        point: {
+            r: 5
+        },
+        grid: {
+            y: {
+                lines: [
+                    {value: 32.20, text: '平均票價'}
+                ]
+            }
+        }
+        
+    });
+}
+</script>
+<body>
+    {% csrf_token %}
+    {% if request.user.is_authenticated %}
+    <!-- navbar -->
+    <!-- ============================================================== -->
+    {% include 'nav.html' %}
+    <!-- ============================================================== -->
+    <!-- end navbar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- left sidebar -->
+    <!-- ============================================================== -->
+    {% include 'side.html' %}
+    <!-- ============================================================== -->
+    <!-- end left sidebar -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        {% include 'nav.html' %}
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        {% include 'side.html' %}
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+                <div class="container-fluid dashboard-content">
+                    <div class="container">
+                        <div class="main">
+                            <h2>Analysis</h2>
+                            <!-- 編輯頁面 -->
+                            <div class="col-10">
+                                <div id="chart" style='height:500px'></div>
+                                <table class="table table-responsive-sm table-hover table-striped" id='scoreboardtable'>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">PassengerId</th>
+                                            <th scope="col">Survived</th>
+                                            <th scope="col">Pclass</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Sex</th>
+                                            <th scope="col">Age</th>
+                                            <th scope="col">SibSp</th>
+                                            <th scope="col">Parch</th>
+                                            <th scope="col">Ticket</th>
+                                            <th scope="col">Fare</th>
+                                            <th scope="col">Cabin</th>
+                                            <th scope="col">Embarked</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                </div>
+                                </div>
+                                </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>您尚未登入喔~<a href="/login/">登入</a></p>
+    {% endif %}
+</body>
+{% block onloadscript %}
+<script>
+initDataTable();
+getChartData();
+</script>
+{% endblock %}

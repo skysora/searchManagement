@@ -14,5 +14,7 @@ urlpatterns = [
     path('uploadData', views.uploadData, name='uploadData'),
     path('actionLog', views.actionLog, name='actionLog'),
     path('searchActionTable', views.searchActionTable, name='searchActionTable'),
+    path('analysis', views.analysis, name='analysis'),
+    path('getChartData', views.getChartData, name='getChartData'),
 
 ]
