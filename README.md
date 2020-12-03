@@ -5,7 +5,7 @@
 ![](https://img.shields.io/static/v1?label=Django&message=3.0.3&color=green)
 ![](https://img.shields.io/static/v1?label=Docker&message=3.0.3&color=blue)
 
-***This system can supply for search database***
+***This system can supply for search database and Data analysis display***
 ***The following example uses case search as an example***
 
 
