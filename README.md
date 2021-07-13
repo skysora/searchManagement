@@ -74,7 +74,7 @@ Example:
  }
 ```
 ## Analysis
-透過測試資料我可以從圖表中發現在鐵達尼號存活的人(1)票價比較高
+病歷資料分析
 <a href=""><img src="img/analysis.png" title="FVCproductions" alt="FVCproductions"></a>
 <a href=""><img src="img/analysis1.png" title="FVCproductions" alt="FVCproductions"></a>
 ## Todo
