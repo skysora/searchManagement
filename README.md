@@ -74,7 +74,7 @@ Example:
  }
 ```
 ## Analysis
-病歷資料分析
+資料分析
 <a href=""><img src="img/analysis.png" title="FVCproductions" alt="FVCproductions"></a>
 <a href=""><img src="img/analysis1.png" title="FVCproductions" alt="FVCproductions"></a>
 ## Todo
