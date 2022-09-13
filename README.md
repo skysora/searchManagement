@@ -1,4 +1,4 @@
-# TPMI_searchManagement(舊版)
+# searchManagement(舊版)
 ![](https://img.shields.io/static/v1?label=python&message=3.7&color=yellow)
 ![](https://img.shields.io/static/v1?label=mysql&message=8.X&color=red)
 ![](https://img.shields.io/static/v1?label=Django&message=3.0.3&color=green)
@@ -38,8 +38,8 @@ Before installing, download and install [docker](https://www.docker.com) , docke
 
 
 ```sh
-$ git clone https://github.com/skysora/TPMI_searchManagement
-$ cd ./TPMI_searchManagement
+$ git clone https://github.com/skysora/searchManagement
+$ cd ./searchManagement
 $ docker-compose up --build
 ```
 You cane access http://ip address:7777 預設帳號:root密碼:root
@@ -48,7 +48,7 @@ You cane access http://ip address:7777 預設帳號:root密碼:root
 ## createAdmin-options
 
 ```sh
-$ cd ./TPMI_searchManagement
+$ cd ./searchManagement
 $ python3 manage.py createsuperuser
 ```
 
@@ -56,7 +56,7 @@ $ python3 manage.py createsuperuser
 
 After you import table on database add your item and if you want more can reference [here](https://querybuilder.js.org)
 
-$ vim ./TPMI_searchManagement/blog/templates/element/fliterList.html
+$ vim ./searchManagement/blog/templates/element/fliterList.html
 
 ```
 
